@@ -8,13 +8,13 @@ module HTTPStackTest
       instance
     end
 
-    def self.call
+    def self.start
       instance = build
-      instance.()
+      instance.start
     end
 
-    def call
-      iteration = 10
+    def start
+      iteration = HTTPStackTest.iterations
 
       until iteration.zero?
         uri = HTTPStackTest.uri
@@ -24,7 +24,7 @@ module HTTPStackTest
         body = JSON.parse response.body
 
         iteration = body['iteration'].to_i
-        __logger.focus iteration
+        __logger.pass "Received response: #{iteration}"
       end
     end
 
@@ -40,6 +40,12 @@ module HTTPStackTest
         Connection::Client.build host, port, reconnect: :when_closed, ssl: ssl_context
       else
         Connection::Client.build host, port, reconnect: :when_closed
+      end
+    end
+
+    module ProcessHostIntegration
+      def change_connection_scheduler(scheduler)
+        connection.scheduler = scheduler
       end
     end
   end

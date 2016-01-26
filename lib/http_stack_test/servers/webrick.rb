@@ -1,7 +1,7 @@
 module HTTPStackTest
-  module Server
+  module Servers
     class Webrick < WEBrick::HTTPServlet::AbstractServlet
-      def self.start
+      def self.run_in_background_thread
         path = HTTPStackTest.path
         port = HTTPStackTest.port
 
@@ -42,11 +42,15 @@ module HTTPStackTest
       def do_POST(request, response)
         request_body = JSON.parse request.body
         iteration = request_body['iteration'].to_i
-        response_body = JSON.pretty_generate :iteration => (iteration - 1)
+        iteration -= 1
+
+        response_body = JSON.pretty_generate 'iteration' => iteration
 
         response.body = response_body
         response['Content-Type'] = 'application/json'
         response.status = 200
+
+        __logger.pass "Served response: #{iteration}"
       end
     end
   end

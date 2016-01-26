@@ -7,6 +7,10 @@ module HTTPStackTest
     'localhost'
   end
 
+  def iterations
+    (ENV['ITERATIONS'] || 3).to_i
+  end
+
   def path
     '/decrement'
   end

@@ -4,6 +4,10 @@ module HTTPStackTest
       @client_context ||= Connection::Controls::SSL::Context::Client.example
     end
 
+    def self.server_context
+      @server_context ||= Connection::Controls::SSL::Context.example :cert => cert, :key => key
+    end
+
     def self.pair
       return key, cert
     end

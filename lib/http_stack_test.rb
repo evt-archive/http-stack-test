@@ -10,5 +10,6 @@ require 'http/server'
 
 require 'http_stack_test/http_stack_test'
 require 'http_stack_test/client'
-require 'http_stack_test/server'
+require 'http_stack_test/servers/server'
+require 'http_stack_test/servers/webrick'
 require 'http_stack_test/ssl'
