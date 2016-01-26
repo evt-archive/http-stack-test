@@ -13,10 +13,11 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.files = Dir.glob('{lib}/**/*')
   s.platform = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.2.3'
+  s.required_ruby_version = '>= 2.3.0'
 
   s.add_runtime_dependency 'connection'
   s.add_runtime_dependency 'process_host'
   s.add_runtime_dependency 'http-commands'
+  s.add_runtime_dependency 'http-protocol'
   s.add_runtime_dependency 'http-server'
 end
