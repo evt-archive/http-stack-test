@@ -37,9 +37,9 @@ module HTTPStackTest
 
       if HTTPStackTest.ssl?
         ssl_context = HTTPStackTest::SSL.client_context
-        Connection::Client.build host, port, reconnect: :when_closed, ssl: ssl_context
+        Connection::Client.build host, port, :reconnect => :closed, :ssl => ssl_context
       else
-        Connection::Client.build host, port, reconnect: :when_closed
+        Connection::Client.build host, port, :reconnect => :closed
       end
     end
 
