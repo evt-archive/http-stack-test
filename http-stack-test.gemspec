@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'http_stack_test'
-  s.version = '0.0.0'
-  s.summary = 'Test suite for Obsidian http stack, including cooperative multitasking and SSL'
+  s.version = '0.0.0.0'
+  s.summary = 'Test suite for the HTTP stack, including cooperative multitasking and SSL'
   s.description = ' '
 
   s.authors = ['The Eventide Project']
   s.email = 'opensource@eventide-project.org'
   s.homepage = 'https://github.com/eventide-project/http-stack-test'
-  s.licenses = ['Not licensed for public use']
+  s.licenses = ['MIT']
 
   s.require_paths = ['lib']
   s.files = Dir.glob('{lib}/**/*')
